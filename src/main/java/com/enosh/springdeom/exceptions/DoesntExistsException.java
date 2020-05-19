@@ -1,7 +1,7 @@
 package com.enosh.springdeom.exceptions;
 
 public class DoesntExistsException extends Exception {
-    
+
     public DoesntExistsException() {
     }
 
