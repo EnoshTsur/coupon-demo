@@ -33,7 +33,7 @@ public class Customer extends UserEntity {
             inverseJoinColumns = @JoinColumn(name = "coupon_id")
     )
     @ManyToMany(
-            cascade = { CascadeType.PERSIST, CascadeType.MERGE},
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.EAGER
     )
     private List<Coupon> coupons = new ArrayList<>();
