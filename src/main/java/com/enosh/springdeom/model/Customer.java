@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +26,17 @@ public class Customer extends UserEntity {
     @Length(min = 2, max = 30)
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @JoinTable(
+            name = "customers_coupons",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "coupon_id")
+    )
+    @ManyToMany(
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.EAGER
+    )
+    private List<Coupon> coupons = new ArrayList<>();
 
     public Customer(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
