@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -31,4 +32,41 @@ public class Coupon extends BaseEntity {
     @NotNull
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
+
+    @Column(name = "amount", nullable = false)
+    private int amount;
+
+    @Column(name = "price", nullable = false)
+    private double price;
+
+    @Column(name = "image")
+    private String image;
+
+    @Lob
+    @Column(name = "description")
+    private String description;
+
+    public Coupon(String title, LocalDate startDate, LocalDate endDate, int amount, double price, String image, String description) {
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Coupon{" +
+                "title='" + title + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
