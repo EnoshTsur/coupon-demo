@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,6 +49,14 @@ public class Coupon extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "coupons")
+    private List<Customer> customers = new ArrayList<>();
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Coupon(String title, LocalDate startDate, LocalDate endDate, int amount, double price, String image, String description) {
         this.title = title;
