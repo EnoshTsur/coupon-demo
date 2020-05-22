@@ -42,7 +42,7 @@ public class CompanyDbdao implements CompanyDao {
                 .map(byId -> mapper.andThen(repository::save).apply(byId))
                 .orElseThrow(() -> new DoesntExistsException(
                         "Company by the id " + id +
-                                "Does not exists in order to update"
+                                " Does not exists in order to update"
                 ));
     }
 
@@ -72,4 +72,9 @@ public class CompanyDbdao implements CompanyDao {
     public boolean existsByEmail(String email) {
         return false;
     }
+
+
 }
+
+
+
