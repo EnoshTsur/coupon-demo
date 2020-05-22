@@ -21,43 +21,20 @@ class CompanyTests {
 
     @Test
     void add() {
-        Stream.of(
-                new Company(
-                        "rainbow",
-                        "rainbow@com",
-                        "l2323"
-                ), new Company(
-                        "yes",
-                        "yes@gm",
-                        "223354"
-                ), new Company(
-                        "bug",
-                        "2njk@jkj",
-                        "545454"
-                ), new Company(
-                        "sports",
-                        "sp@hopj",
-                        "443219"
-                )).map(companyDao::addCompany)
-                .forEach(System.out::println);
+        Company company = new Company(
+                "Clalit",
+                "cla@lit",
+                "2345213"
+        );
+
+        Company afterSave = companyDao.addCompany(company);
+        System.out.println(afterSave);
     }
 
     @Test
     void update() {
 
-        try {
 
-            Function<Company, Company> mapper = company -> {
-                company.setName("Yoshi");
-                return company;
-            };
-
-            Company updated = companyDao.updateCompany(mapper, 2L);
-            System.out.println(updated);
-
-        } catch (IllegalStateException | DoesntExistsException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }

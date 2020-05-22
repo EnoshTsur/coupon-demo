@@ -5,6 +5,7 @@ import com.enosh.springdeom.model.Company;
 import com.enosh.springdeom.repository.CompanyRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.function.Function;
 
 import static org.apache.commons.codec.digest.DigestUtils.*;
 
+@Primary
 @Component
 public class CompanyDbdao implements CompanyDao {
 

@@ -15,7 +15,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@ToString
 @Table(name = "company")
 public class Company extends UserEntity {
 
@@ -36,5 +35,16 @@ public class Company extends UserEntity {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", coupons=" + coupons +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
